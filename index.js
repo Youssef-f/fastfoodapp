@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import menuRoutes from "./routes/menuroutes.js";
+import menuRoutes from "./routes/menuRoutes.js";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
