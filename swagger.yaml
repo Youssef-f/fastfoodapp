@@ -1,0 +1,140 @@
+openapi: "3.0.0"
+info:
+  title: "Fast Food API"
+  description: "Documentation de l'API pour les menus de fast food"
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:3007/api"
+paths:
+  /menus:
+    get:
+      summary: "Récupérer tous les menus"
+      responses:
+        "200":
+          description: "Succès"
+          content:
+            application/json:
+              schema:
+                type: "array"
+                items:
+                  type: "object"
+                  properties:
+                    fastFoodName:
+                      type: "string"
+                    menus:
+                      type: "array"
+                      items:
+                        type: "object"
+                        properties:
+                          title:
+                            type: "string"
+                          image:
+                            type: "string"
+                          price:
+                            type: "number"
+                          components:
+                            type: "array"
+                            items:
+                              type: "string"
+    post:
+      summary: "Créer un nouveau menu"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: "object"
+              properties:
+                fastFoodName:
+                  type: "string"
+                menus:
+                  type: "array"
+                  items:
+                    type: "object"
+                    properties:
+                      title:
+                        type: "string"
+                      image:
+                        type: "string"
+                      price:
+                        type: "number"
+                      components:
+                        type: "array"
+                        items:
+                          type: "string"
+      responses:
+        "201":
+          description: "Menu créé avec succès"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  _id:
+                    type: "string"
+                  fastFoodName:
+                    type: "string"
+                  menus:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        title:
+                          type: "string"
+                        image:
+                          type: "string"
+                        price:
+                          type: "number"
+                        components:
+                          type: "array"
+                          items:
+                            type: "string"
+  "/menus/{id}":
+    get:
+      summary: "Récupérer les détails d'un menu"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID du menu à récupérer"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "Succès"
+          content:
+            application/json:
+              schema:
+                type: "object"
+                properties:
+                  _id:
+                    type: "string"
+                  fastFoodName:
+                    type: "string"
+                  menus:
+                    type: "array"
+                    items:
+                      type: "object"
+                      properties:
+                        title:
+                          type: "string"
+                        image:
+                          type: "string"
+                        price:
+                          type: "number"
+                        components:
+                          type: "array"
+                          items:
+                            type: "string"
+    delete:
+      summary: "Supprimer un menu"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "ID du menu à supprimer"
+          required: true
+          schema:
+            type: "string"
+      responses:
+        "204":
+          description: "Menu supprimé avec succès"
